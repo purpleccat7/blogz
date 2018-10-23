@@ -18,32 +18,17 @@ class Blog(db.Model):
         self.title = title 
         self.body = body
 
-#@app.route('/blog')
-#def view_blog():
-    #blog_post = (Blog.title, Blog.body)
-    #blog_title = request.args.get(Blog.title)
-    #blog_content = request.args.get(Blog.body)
-    #blog_id = request.args.get(Blog.id)
-    #all_blogs = Blog.query.all()
-    #return render_template('blog.html', page_title = "Build a Blog!", all_blogs=all_blogs, blog_title=blog_title, blog_content=blog_content)
-
 @app.route('/blog', methods=['POST', 'GET'])
 def view_post():
 
-    # blog_title = request.args.get(Blog.title)
-    # blog_content = request.args.get(Blog.body)
     blog_id = request.args.get('id')
-    print('##############')
-    print(blog_id)
 
     if blog_id is not None:
         blogs = Blog.query.filter_by(id=blog_id)
-        print("test")
         return render_template('single_post.html', page_title='Blog Post', blogs=blogs)
         
     else:
         blogs = Blog.query.all()
-        print("test2")
         return render_template('blog.html', page_title ='Build a Blog!', blogs=blogs)
 
 @app.route('/newpost', methods=['POST', 'GET'])
