@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>{{page_title}}</title>
+
         <style>
             .error {
                 color: red; 
@@ -11,8 +12,15 @@
 <body>
 
         <div>
-            <a href='/blog'>Main Blog Page</a>
-            <a href="/newpost">Add a Blog Entry</a>
+            <a href='/'>home</a>
+            <a href='/blog'>all posts</a>
+            <a href="/blog/newpost">new post</a>
+        </div>
+
+        
+        <div align='right'> 
+            <a href="/login">login</a>
+            <a href="/logout">logout</a>
         </div>
 
     {% block content %}

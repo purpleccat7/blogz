@@ -8,8 +8,8 @@
     {% else %}
 
     
-        {% for name in blogs %}
-        <h2><a href="/blog?id={{name.id}}">{{name.title}}</a></h2>
+        {% for name in users %}
+        <h2><a href="/blog?user={{name.username}}">{{name.title}}</a></h2>
         <p>{{name.body}}</p>
 
         {% endfor %}
