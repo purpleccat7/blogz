@@ -94,18 +94,18 @@ def index():
 @app.route('/blog', methods=['POST', 'GET'])
 def view_post():
 
-    blog_id = request.args.get('Blog.id')
-    owner_id = request.args.get('User.id')
+    blog_id = request.args.get('id')
+    owner_id = request.args.get('user')
     title = request.args.get('title')
     username = request.args.get('username')
     users = User.query.filter_by(username=username).first()
     blogs = Blog.query.all()
 
-    if owner_id is not None:
+    if owner_id:
         blogs = Blog.query.filter_by(owner_id=owner_id).all()
         return render_template('singleUser.html', page_title='Blog Posts', blogs=blogs)
     
-    if blog_id is not None:
+    if blog_id:
         blogs = Blog.query.filter_by(id=blog_id)
         return render_template('single_post.html', page_title='Blog Post', blogs=blogs)
     
